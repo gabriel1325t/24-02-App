@@ -8,11 +8,8 @@ const api = axios.create({
 });
 
 const sheets = {
-    postLogin:(user)=>api.post("login", user)
-   
-}
-const sheets2 = {
+    postLogin:(user)=>api.post("login", user),
     postUser:(user)=>api.post("user", user)
 }
 
-export default sheets2;
+export default sheets;
