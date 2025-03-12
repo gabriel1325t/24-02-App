@@ -2,17 +2,17 @@ import React, {useState} from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Button } from "react-native";
 import api from '../axios/axios'
 
-export default function Login({ navigation }){
-    const [user, setUser] = useState ({ 
-        email: "",
-        password: "",
+export default function CadastroIngresso({navigation}){
+    const [ingresso, setUser] = useState ({ 
+        preco: "",
+        tipo:"",
+        fk_id_evento:"",
     });
 
-    async function handleLogin(){
-        await api.postLogin(user).then(
+    async function handleCadastroIngresso(){
+        await api.postIngresso(ingresso).then(
             (response)=>{
-                Alert.alert("OK", response.data.message);
-            navigation.navigate("Home");
+                Alert.alert('OK',response.data.message)
             },(error)=>{
                 Alert.alert('Erro',error.response.data.error)
             }
@@ -21,27 +21,35 @@ export default function Login({ navigation }){
         
     return(
         <View style={styles.container}>
-        <Text style={styles.title}> Faça Login</Text>
+        <Text style={styles.title}> Cadastre seu ingresso</Text>
         <TextInput 
         style={styles.input}
-        placeholder="Email"
-        value={user.email}
+        placeholder="Preço"
+        value={ingresso.preco}
         onChangeText={(value)=> {
-            setUser({...user, email: value});
+            setUser({...ingresso, preco: value});
         }}
         />
         <TextInput
         style={styles.input}
-        placeholder="Senha"
-        value={user.password}
+        placeholder="Tipo"
+        value={ingresso.tipo}
         onChangeText={(value)=> {
-            setUser({...user, password: value});
+            setUser({...ingresso, tipo: value});
         }}
         />
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-            <Text>Entrar</Text>
+        <TextInput
+        style={styles.input}
+        placeholder="Id_evento"
+        value={ingresso.fk_id_evento}
+        onChangeText={(value)=> {
+            setUser({...ingresso, fk_id_evento: value});
+        }}
+        />
+        <TouchableOpacity onPress={handleCadastroIngresso} style={styles.button}>
+            <Text>Cadastrar</Text>
         </TouchableOpacity>
-        <Button title="Cadastro" onPress={()=> navigation.navigate("Cadastro")}/>
+        <Button title="Voltar para Home" onPress={()=> navigation.navigate("Home")}/>
         </View>
     );
 }
