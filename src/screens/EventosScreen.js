@@ -46,7 +46,7 @@ export default function EventosScreen() {
               style={styles.eventCard}
               onPress={() => console.log("Abrir o Modal")}
             >
-              <Text>{item.nome}</Text>
+              <Text style={styles.eventName}>{item.nome}</Text>
               <Text>{item.local}</Text>
               <Text>{new Date(item.data_hora).toLocaleString}</Text>
             </TouchableOpacity>
