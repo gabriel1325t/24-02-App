@@ -46,13 +46,13 @@ export default function Login({  }){
         }}
         />
         <TouchableOpacity onPress={()=> setUser({...user,showPassword: !user.showPassword})}>
-            <Ionicons name={user.showPassword? "eye-off":"eye"} size={24} color= "purple"/>
+            <Ionicons name={user.showPassword? "eye-off":"eye"} size={24} color= "pink"/>
         </TouchableOpacity>
         </View>
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
             <Text>Entrar</Text>
         </TouchableOpacity>
-        <Button title="Cadastro" onPress={()=> navigation.navigate("Cadastro")} color="purple"/>
+        <Button title="Cadastro" onPress={()=> navigation.navigate("Cadastro")} color="pink"/>
         </View>
     );
 }

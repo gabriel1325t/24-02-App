@@ -53,6 +53,12 @@ export default function EventosScreen() {
           )}
         />
       )}
+      <Modal
+      visible={modalVisible}
+      onRequestClose={()=> setModalVisible(false)}
+      animationType="slide">
+
+      </Modal>
     </View>
   );
 }
